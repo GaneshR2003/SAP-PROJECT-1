@@ -1,0 +1,6 @@
+@EndUserText.label: 'ZR_TABLE_STD'
+@MappingRole: true
+define role ZR_TABLE_STD {
+  grant select on ZR_TABLE_STD
+  where TRUE;
+}

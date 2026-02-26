@@ -1,0 +1,56 @@
+managed implementation in class ZBP_R_TABLE_STD unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_TABLE_STD alias ZrTableStd
+persistent table ZTABLE_STD
+extensible
+draft table ZTABLE_STD_D
+etag master LastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+  field ( readonly )
+   StudentID,
+   CreatedBy,
+   CreatedAt,
+   LastChangedBy,
+   LastChangedAt;
+
+  field ( numbering : managed )
+   StudentID;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZTABLE_STD corresponding extensible
+  {
+    StudentID = STUDENT_ID;
+    FirstName = FIRST_NAME;
+    LastName = LAST_NAME;
+    Gender = GENDER;
+    DateOfBirth = DATE_OF_BIRTH;
+    Age = AGE;
+    Department = DEPARTMENT;
+    YearOfStudy = YEAR_OF_STUDY;
+    RollNumber = ROLL_NUMBER;
+    Email = EMAIL;
+    PhoneNumber = PHONE_NUMBER;
+    Address = ADDRESS;
+    AdmissionDate = ADMISSION_DATE;
+    Status = STATUS;
+    CreatedBy = CREATED_BY;
+    CreatedAt = CREATED_AT;
+    LastChangedBy = LAST_CHANGED_BY;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+
+}
